@@ -19,16 +19,17 @@ if (msg === undefined) {
     msg = 'def';
 }
 
-Parse.initialize("UE7n5Nm1jxnpTqlicSLW7020AUB0TYNCx1XuoUp7", "QnPAOSd1ZYBkgTHBj6IZclSl2vmofTXLzQeaQN8l");
-
-function pushClick() {
-    var PushObject = Parse.Object.extend("push");
-    var query = new Parse.Query(PushObject);
-    query.get("amqwpVzsji", {
-        success: function(pushObject) {
-            var foo = pushObject.get(msg);
-            alert(foo);
+function clickNode() {
+    $.ajax({
+        url: 'http://nodejs-idrayv.rhcloud.com/push',
+        data: {
+            "msg": msg
         },
-        error: function(object, error) {}
-    })
+        success: function(data) {
+            alert(data);
+        },
+        error: function() {
+            alert('Error occured!');
+        }
+    });
 }
